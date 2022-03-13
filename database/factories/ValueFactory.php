@@ -21,12 +21,11 @@ class ValueFactory extends Factory
         
         return [
             'value' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 3, $max = 4.5),
-            'category_id' =>$this->faker->numberBetween($min = 1, $max = 2),
-
+            'category_id' => Category::pluck('id')->random(),
             'user_id' => User::pluck('id')->random(),
-
+            'date_id' => Date::pluck('id')->random(),
             //'user_id' =>$this->faker->numberBetween($min = 1, $max = 10),
-            'date_id' =>$this->faker->numberBetween($min = 1, $max = 100),
+            
         ];
     }
 }

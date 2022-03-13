@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Date;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Value;
@@ -18,19 +19,9 @@ class DatabaseSeeder extends Seeder
         
         User::factory(10)->create();
 
-        
+        Category::factory(2)->create();
 
-        $category = new Category();
-
-        $category->name = "Dolar";
-
-        $category->save();
-
-        $category = new Category();
-
-        $category->name = "Euro";
-
-        $category->save();
+        Date::factory(100)->create();
 
         Value::factory(100)->create();
 
