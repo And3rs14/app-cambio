@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        //devuelve todos los registros de la tabla categories
+        $categories = Category::all();
+        return $categories;
     }
 
     /**
@@ -26,7 +28,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Crea un nuevo registro (habilitar asignacion masiva)
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        $category = Category::create($request->all());
+        return $category;
     }
 
     /**
@@ -37,7 +45,8 @@ class CategoryController extends Controller
      */
     public function show(category $category)
     {
-        //
+        //Muestra un registro segun el parametro enviado
+        return $category;
     }
 
     /**
@@ -49,7 +58,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, category $category)
     {
-        //
+        //Actualiza un registro
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        $category->update($request->all());
+        return $category;
     }
 
     /**
@@ -61,5 +76,7 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         //
+        $category->delete();
+        return $category;
     }
 }
