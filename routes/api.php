@@ -7,6 +7,8 @@ Use App\Http\Controllers\Api\RegisterController;
 
 Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.register');
 
+
+Route::apiResource('categories', CategoryController::class)->names('api.v1.categories');
 /*
 |--------------------------------------------------------------------------
 | API Routes
