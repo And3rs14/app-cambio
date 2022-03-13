@@ -17,6 +17,6 @@ Use App\Http\Controllers\Api\RegisterController;
 
 Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.register');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
