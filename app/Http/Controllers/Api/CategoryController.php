@@ -46,7 +46,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        //Muestra un registro segun el parametro enviado
+        return $category;
     }
 
     /**
@@ -58,7 +59,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        //Actualiza un registro
+         $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255|unique:categories,slug,'.$category->id,
+        ]);
+
+        $category->update($request->all());
+        return $category;
     }
 
     /**
@@ -70,5 +78,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        $category->delete();
+        return $category;
     }
 }
