@@ -16,7 +16,8 @@ class CreateValuesTable extends Migration
         Schema::create('values', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->float('compra_dolar');
+            $table->float('venta_dolar');
 
             $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained();
