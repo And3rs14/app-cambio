@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Use App\Http\Controllers\Api\RegisterController;
 
+//Grupo 08: App informacion del tipo de cambio Dolar/Euro en Peru con historial
+
 Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.register');
 
 

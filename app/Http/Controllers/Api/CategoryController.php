@@ -62,7 +62,7 @@ class CategoryController extends Controller
         //Actualiza un registro
          $request->validate([
             'name' => 'required|max:255',
-            'slug' => 'required|max:255|unique:categories,slug,'.$category->id,
+            //'slug' => 'required|max:255|unique:categories,slug,'.$category->id,
         ]);
 
         $category->update($request->all());
