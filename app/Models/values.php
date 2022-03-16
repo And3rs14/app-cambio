@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class values extends Model
+class Values extends Model
 {
     use HasFactory;
 
-    protected $fillable =['sell_dolar','buy_dolar'];
+    protected $fillable =['sell_moneda','buy_moneda'];
 
     //Relación de 1 a muchos 
     public function info_values(){
-        return $this->hasMany(info_values::class);
+        return $this->hasMany(Info_values::class);
     }
 }

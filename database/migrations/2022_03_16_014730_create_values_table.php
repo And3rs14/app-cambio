@@ -14,10 +14,11 @@ class CreateValuesTable extends Migration
     public function up()
     {
         Schema::create('values', function (Blueprint $table) {
-            $table->primary('value_id');
+            $table->id();
+            //$table->primary('value_id');
 
-            $table->float('sell_dolar');
-            $table->float('buy_dolar');
+            $table->float('sell_moneda');
+            $table->float('buy_moneda');
 
             $table->timestamps();
         });

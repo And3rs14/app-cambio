@@ -14,13 +14,19 @@ class CreateInfoValuesTable extends Migration
     public function up()
     {
         Schema::create('info_values', function (Blueprint $table) {
-            $table->primary('info_value_id');
+            $table->id();
+            //$table->primary('info_value_id');
 
             $table->dateTime('date');
 
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->foreignId('value_id')->constrained('values')->onDelete('cascade');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('value_id');
+
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('value_id')->references('id')->on('values')->onDelete('cascade');
             
+
             $table->timestamps();
         });
     }

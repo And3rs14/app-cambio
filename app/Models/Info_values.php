@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Dotenv\Parser\Value;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class info_value extends Model
+class Info_values extends Model
 {
     use HasFactory;
 
@@ -23,6 +24,6 @@ class info_value extends Model
         return $this->belongsTo(category::class);
     }
     public function values(){
-        return $this->belongsTo(values::class);
+        return $this->belongsTo(Values::class);
     }
 }

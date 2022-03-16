@@ -12,7 +12,7 @@ class historial extends Model
     //Relacion 1 a muchos inversa
 
     public function info_values(){
-        return $this->belongsTo(info_values::class);
+        return $this->belongsTo(Info_values::class);
     }
     public function users(){
         return $this->belongsTo(User::class);
