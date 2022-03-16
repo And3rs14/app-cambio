@@ -19,8 +19,8 @@ class CreateHistorialsTable extends Migration
             $table->dateTime('fecha_consulta');
 
             $table->foreignId('info_value_id')->constrained('info_values')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('info_values')->onDelete('cascade');
-            
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
