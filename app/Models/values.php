@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class values extends Model
 {
     use HasFactory;
 
-    //Habilitar asignacion masiva
-    protected $fillable =['name'];
-    //protected $fillable =['name', 'slug'];
-
+    protected $fillable =['sell_dolar','buy_dolar'];
 
     //Relación de 1 a muchos 
     public function info_values(){

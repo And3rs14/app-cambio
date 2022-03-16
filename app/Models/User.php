@@ -42,9 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //relacion de 1 a muchos 
-
-    public function values(){
-        return $this->hasMany(Value::class);
+    //relacion de 1 a muchos     
+    public function historials(){
+        return $this->hasMany(historials::class);
     }
 }

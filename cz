@@ -1,0 +1,83 @@
+[33mcommit e588717544c1a653a132f4b43a993a7f5de1467a[m[33m ([m[1;36mHEAD -> [m[1;32mtest-3[m[33m, [m[1;31morigin/test-2[m[33m, [m[1;32mtest-2[m[33m)[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Tue Mar 15 18:02:01 2022 -0500
+
+    Comentario en Slug de categoryController
+
+[33mcommit 1ff1902c5a24ae8313a50cc6890441c09361b09a[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Mon Mar 14 16:01:35 2022 -0500
+
+    Se completó CategoryController
+
+[33mcommit 84f877edd95b4cef421490cef209d8703a2d32ea[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Mon Mar 14 15:57:47 2022 -0500
+
+    Se añadió compra y venta dolar en la migration de values
+
+[33mcommit b4de35079e483ed0328a4890e285027dc19fc170[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Mon Mar 14 01:09:17 2022 -0500
+
+    Modificacion en api.php
+
+[33mcommit 398155b24487ab420e17299807160455f546ffd3[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Mon Mar 14 01:05:27 2022 -0500
+
+    Relaciones hechas y categoryController creado con store
+
+[33mcommit 615eed731a95d72cb2ec23eec797bc757398fe10[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Mon Mar 14 00:47:57 2022 -0500
+
+    Version 2 base datos
+
+[33mcommit ad5f58f245d304b02dcd9b18075913fbcac28734[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sat Mar 12 22:16:07 2022 -0500
+
+    Cuarto arreglo en RegisterController
+
+[33mcommit 9efec1179520a04685ef8087f92ec73a748f6fe9[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sat Mar 12 21:29:59 2022 -0500
+
+    Tercer arreglo en RegisterController
+
+[33mcommit 4c20ecb52a4f4ba256d0525e583219d87ac7ca2e[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sat Mar 12 21:11:38 2022 -0500
+
+    Segundo arreglo en email en RegisterController
+
+[33mcommit 111e6868ac8ef1332427edb6e760a1322699ddf3[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sat Mar 12 20:49:09 2022 -0500
+
+    Arreglo en emil en RegisterController.php
+
+[33mcommit 32a12de7cb3f6c33cf2d108c3bac80d85311b1c4[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sat Mar 12 20:45:13 2022 -0500
+
+    Editado api.php y agregado la ruta v1
+
+[33mcommit 52c386e8ae132fe8afaf925ba7b495556fe1bea5[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sun Mar 6 18:39:18 2022 -0500
+
+    Eliminacion del archivo hola.txt
+
+[33mcommit ab9e8d22da476ec128f9656009b1b31a9b815c37[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sun Mar 6 18:25:57 2022 -0500
+
+    Segunda actualizacion
+
+[33mcommit 1c3a95c72b3ecc7c7b323659958a1fe0bc301cb2[m
+Author: Bill Anderson <billbardales@gmail.com>
+Date:   Sun Mar 6 18:19:09 2022 -0500
+
+    Agregando el proyecto

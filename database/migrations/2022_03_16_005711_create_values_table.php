@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateValueDateTable extends Migration
+class CreateValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateValueDateTable extends Migration
      */
     public function up()
     {
-        Schema::create('value_date', function (Blueprint $table) {
-            $table->id();
+        Schema::create('values', function (Blueprint $table) {
+            $table->primary('value_id');
 
-            $table->foreignId('value_id')->constrained()->onDelete('cascade');
-            $table->foreignId('date_id')->constrained()->onDelete('cascade');
+            $table->float('sell_dolar');
+            $table->float('buy_dolar');
 
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateValueDateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('value_date');
+        Schema::dropIfExists('values');
     }
 }
