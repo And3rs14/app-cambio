@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\CategoryController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\CategoryController;
 Use App\Http\Controllers\Api\RegisterController;
-
+Use App\Http\Controllers\Api\ValueController;
 //Grupo 08: App informacion del tipo de cambio Dolar/Euro en Peru con historial
 
 Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.register');
@@ -13,6 +14,13 @@ Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.reg
 
 
 Route::apiResource('categories', CategoryController::class)->names('api.v1.categories');
+Route::apiResource('values', ValueController::class)->names('api.v1.values');
+
+/* Route::get('values', [ValueController::class, 'index'])->name('api.v1.values.index');
+Route::post('values', [ValueController::class, 'store'])->name('api.v1.values.store');
+Route::get('values/{value}', [ValueController::class, 'show'])->name('api.v1.cvalues.show');
+Route::put('values/{value}', [ValueController::class, 'update'])->name('api.v1.values.update');
+Route::delete('values/{value}', [ValueController::class, 'destroy'])->name('api.v1.values.destroy'); */
 
 /*
 |--------------------------------------------------------------------------

@@ -15,8 +15,8 @@ class ValuesFactory extends Factory
     {
         return [
             
-            'buy_moneda' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 3, $max = 4),
-            'sell_moneda' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 3.5, $max = 4)
+            'buy_moneda' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 3.00, $max = 4.00),
+            'sell_moneda' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 3.00, $max = 4.00)
             
             
         ];
