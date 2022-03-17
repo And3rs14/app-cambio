@@ -43,9 +43,13 @@ class ValueController extends Controller
      * @param  \App\Models\values  $values
      * @return \Illuminate\Http\Response
      */
-    public function show(values $values)
+    //Antes era public function show(values $values)
+    public function show($values)
     {
-        return $values;
+        $valor = values::select('*')->where('id', $values)->get();
+        
+
+        return $valor;
     }
 
     /**
@@ -55,9 +59,19 @@ class ValueController extends Controller
      * @param  \App\Models\values  $values
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, values $values)
+
+    //Antes era public function update(Request $request, values $values)
+    public function update(Request $request,$values)
     {
-        //
+        $request->validate([
+            'sell_moneda' => 'required|numeric|between:0.00,99.99',
+            'buy_moneda' => 'required|numeric|between:0.00,99.99',
+        ]);
+        $values = values::select('*')->where('id', $values)->update($request->all());
+        $valor = values::select('*')->where('id', $values)->get();
+
+        //$valor->update($request->all());
+        return $valor;
     }
 
     /**
@@ -66,8 +80,12 @@ class ValueController extends Controller
      * @param  \App\Models\values  $values
      * @return \Illuminate\Http\Response
      */
-    public function destroy(values $values)
+    public function destroy($values)
     {
         //
+        $value = values::select('*')->where('id', $values)->get();
+        values::select('*')->where('id', $values)->delete();
+        
+        return $value;
     }
 }
