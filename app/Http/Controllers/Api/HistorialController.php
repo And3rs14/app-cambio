@@ -29,6 +29,15 @@ class HistorialController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            //faltaria un unique
+            'fecha_consulta' => 'required|date',
+            //|numeric?
+            'info_value_id' => 'required|exists:info_values,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+        $historials = historial::create($request->all());
+        return $historials;
     }
 
     /**
@@ -37,9 +46,10 @@ class HistorialController extends Controller
      * @param  \App\Models\historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function show(historial $historial)
+    public function show($historial)
     {
-        //
+        $historial = historial::select('*')->where('id', $historial)->get();
+        return $historial;
     }
 
     /**
@@ -49,9 +59,21 @@ class HistorialController extends Controller
      * @param  \App\Models\historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, historial $historial)
+    public function update(Request $request, $historial)
     {
-        //
+        $request->validate([
+            //faltaria un unique
+            'fecha_consulta' => 'required|date',
+            //|numeric?
+            'info_value_id' => 'required|exists:info_values,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $historial = historial::select('*')->where('id', $historial)->update($request->all());
+        $historial = historial::select('*')->where('id', $historial)->get();
+
+        //$valor->update($request->all());
+        return $historial;
     }
 
     /**
@@ -60,8 +82,12 @@ class HistorialController extends Controller
      * @param  \App\Models\historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(historial $historial)
+    public function destroy($historial)
     {
         //
+        $historials = historial::select('*')->where('id', $historial)->get();
+        historial::select('*')->where('id', $historial)->delete();
+        
+        return $historials;
     }
 }

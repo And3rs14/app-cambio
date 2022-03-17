@@ -9,6 +9,8 @@ class historial extends Model
 {
     use HasFactory;
 
+    protected $fillable =['fecha_consulta','info_value_id','user_id'];
+
     //Relacion 1 a muchos inversa
 
     public function info_values(){

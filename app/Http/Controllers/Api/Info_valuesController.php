@@ -15,6 +15,10 @@ class Info_valuesController extends Controller
      */
     public function index()
     {
+
+        /* $Info_values = Info_values::join("categories","categories.id", "=", "info_values.category_id")->select("info_values.id","info_values.date","categories.name","info_values.value_id")->join("values","values.id", "=", "info_values.value_id")->select("info_values.id","info_values.date","categories.name","values.sell_moneda","values.buy_moneda")->get();
+            
+        return $Info_values; */
         
         $info_values = Info_values::all();
         return $info_values;
