@@ -30,6 +30,15 @@ class Info_valuesController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            //faltaria un unique
+            'date' => 'required|date',
+            //|numeric?
+            'category_id' => 'required|exists:categories,id',
+            'value_id' => 'required|exists:values,id',
+        ]);
+        $info_values = Info_values::create($request->all());
+        return $info_values;
     }
 
     /**
@@ -56,7 +65,9 @@ class Info_valuesController extends Controller
     {
         //
         $request->validate([
+            //faltaria un unique
             'date' => 'required|date',
+            //|numeric?
             'category_id' => 'required|exists:categories,id',
             'value_id' => 'required|exists:values,id',
         ]);

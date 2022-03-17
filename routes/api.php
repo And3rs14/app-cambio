@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CategoryController;
 Use App\Http\Controllers\Api\RegisterController;
 Use App\Http\Controllers\Api\ValueController;
 Use App\Http\Controllers\Api\Info_valuesController;
+Use App\Http\Controllers\Api\HistorialController;
 //Grupo 08: App informacion del tipo de cambio Dolar/Euro en Peru con historial
 
 Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.register');
@@ -17,6 +18,8 @@ Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.reg
 Route::apiResource('categories', CategoryController::class)->names('api.v1.categories');
 Route::apiResource('values', ValueController::class)->names('api.v1.values');
 Route::apiResource('info_values', Info_valuesController::class)->names('api.v1.info_value');
+Route::apiResource('historial', HistorialController::class)->names('api.v1.historial');
+
 
 /* Route::get('values', [ValueController::class, 'index'])->name('api.v1.values.index');
 Route::post('values', [ValueController::class, 'store'])->name('api.v1.values.store');

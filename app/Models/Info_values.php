@@ -11,7 +11,7 @@ class Info_values extends Model
     use HasFactory;
 
 
-    protected $fillable =['date'];
+    protected $fillable =['date','category_id','value_id'];
     
     //Relación de 1 a muchos    
     public function historials(){
