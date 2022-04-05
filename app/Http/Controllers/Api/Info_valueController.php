@@ -46,8 +46,9 @@ class Info_valueController extends Controller
      */
     public function show($info_values)
     {
-        $info_values = Info_value::select('*')->where('id', $info_values)->get();
-        return $info_values;
+        $info_value =Info_value::findOrFail($info_values);
+        //$info_values = Info_value::select('*')->where('id', $info_values)->get();
+        return $info_value;
     }
 
     /**
