@@ -18,7 +18,7 @@ class CreateDaysTable extends Migration
 
             $table->string('day');
             
-            $table->timestamps();
+            
         });
     }
 

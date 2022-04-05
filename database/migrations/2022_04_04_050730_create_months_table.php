@@ -18,7 +18,7 @@ class CreateMonthsTable extends Migration
 
             $table->string('month');
             
-            $table->timestamps();
+            
         });
     }
 
