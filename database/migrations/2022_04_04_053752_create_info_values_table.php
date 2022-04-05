@@ -23,7 +23,7 @@ class CreateInfoValuesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('value_id')->references('id')->on('values')->onDelete('cascade');
 
-            
+            $table->timestamps();
         });
     }
 

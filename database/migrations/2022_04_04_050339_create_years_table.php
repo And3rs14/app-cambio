@@ -18,7 +18,7 @@ class CreateYearsTable extends Migration
 
             $table->string('year');
             
-            $table->timestamps();
+            
         });
     }
 
