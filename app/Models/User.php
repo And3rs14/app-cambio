@@ -43,6 +43,6 @@ class User extends Authenticatable
     ];
     //relacion de 1 a muchos 
     public function historicals(){
-        return $this->hasMany(Historical::class);
+        return $this->hasMany(Historical::class,'user_id','id');
     }
 }

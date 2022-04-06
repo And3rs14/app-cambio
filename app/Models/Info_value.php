@@ -15,7 +15,7 @@ class Info_value extends Model
 
     //Relación de 1 a muchos    
     public function historicals(){
-        return $this->hasMany(Historical::class);
+        return $this->hasMany(Historical::class,'info_value_id','id');
     }
 
      //Relacion 1 a muchos inversa

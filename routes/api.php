@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\Api\Info_valueController;
 Use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\CategoryController;
-Use App\Http\Controllers\Api\ValueController;
+Use App\Http\Controllers\Api\HistoricalController;
 
 Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.register');
 
 Route::apiResource('categories', CategoryController::class)->names('api.v1.categories');
-Route::apiResource('values', ValueController::class)->names('api.v1.values');
+Route::apiResource('historicals', HistoricalController::class)->names('api.v1.historicals');
 
 Route::apiResource('info_values', Info_valueController::class)->names('api.v1.info_values');
 
