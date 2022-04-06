@@ -28,9 +28,9 @@ class Info_valueController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            //faltaria un unique
+            
             'date' => 'required|date',
-            //|numeric?
+            
             'category_id' => 'required|exists:categories,id',
             'value_id' => 'required|exists:values,id',
         ]);

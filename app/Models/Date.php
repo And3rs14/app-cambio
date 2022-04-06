@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Value extends Model
+class Date extends Model
 {
+    public $timestamps = false;
     use HasFactory;
+    protected $fillable =['date'];
+    
 
-    protected $fillable =['sell_moneda','buy_moneda'];
 
     //Relación de 1 a muchos 
     public function info_values(){
-        return $this->hasMany(Info_values::class,'value_id','id');
+        return $this->hasMany(info_values::class,'date_id','id');
     }
 }
