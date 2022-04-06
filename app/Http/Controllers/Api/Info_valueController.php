@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Info_value;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Date;
+
+
 class Info_valueController extends Controller
 {
     /**
@@ -27,15 +30,29 @@ class Info_valueController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            
-            'date' => 'required|date',
-            
+        $data = request()->validate([
+            'sell_moneda' => 'required|numeric|between:0.00,99.99',
+            'buy_moneda' => 'required|numeric|between:0.00,99.99',
             'category_id' => 'required|exists:categories,id',
-            'value_id' => 'required|exists:values,id',
+            'date' => 'required|date_format:Y-m-d',
         ]);
-        $info_values = Info_value::create($request->all());
+        
+        $date = Date::create([
+            'date' => $data['date'],
+            //'info_value_id' => $info_value->id, 
+        ]);
+        $info_values = Info_value::create([
+            'sell_moneda' => $data['sell_moneda'],
+            'buy_moneda' => $data['buy_moneda'],
+            'category_id' => $data['category_id'],
+            'date_id' => $date->id,
+        ]);
+        
+
+        //$info_values = Info_value::create($request->all());
         return $info_values;
+
+        //return redirect()->route('users.index');
     }
 
     /**
@@ -60,18 +77,26 @@ class Info_valueController extends Controller
      */
     public function update(Request $request, $info_values)
     {
-        $request->validate([
-            //faltaria un unique
-            'date' => 'required|date',
-            //|numeric?
+        $info_value = Info_value::find($info_values);
+        $date = $info_value->date_id;
+        $date = Date::find($date);
+        
+        $data = request()->validate([
+            'sell_moneda' => 'required|numeric|between:0.00,99.99',
+            'buy_moneda' => 'required|numeric|between:0.00,99.99',
             'category_id' => 'required|exists:categories,id',
-            'value_id' => 'required|exists:values,id',
+            'date' => 'required|date_format:Y-m-d',
         ]);
+        $date->date = $data['date'];
+        $info_value->sell_moneda = $data['sell_moneda'];
+        $info_value->buy_moneda = $data['buy_moneda'];
+        $info_value->category_id = $data['category_id'];
+        $info_value->date_id = $date->id;
+        
+        $date->push();
+        $info_value->push();
 
-        $info_values = Info_value::select('*')->where('id', $info_values)->update($request->all());
-        $info_value = Info_value::select('*')->where('id', $info_values)->get();
-
-        //$valor->update($request->all());
+        //$info_values = Info_value::create($request->all());
         return $info_value;
     }
 
@@ -83,9 +108,10 @@ class Info_valueController extends Controller
      */
     public function destroy($info_values)
     {
-        $info_value = Info_value::select('*')->where('id', $info_values)->get();
-        Info_value::select('*')->where('id', $info_values)->delete();
         
-        return $info_value;
+        $info_value = Info_value::find($info_values);
+        Info_value::destroy($info_values);
+        
+        return  $info_value;
     }
 }

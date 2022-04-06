@@ -17,8 +17,8 @@ class Info_valueFactory extends Factory
     public function definition()
     {
         return [
-            
-            'value_id' => Value::pluck('id')->random(),
+            'buy_moneda' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 3.00, $max = 4.00),
+            'sell_moneda' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 3.00, $max = 4.00),
             'category_id' => Category::pluck('id')->random(),
             'date_id' => Date::pluck('id')->random(),
         ];

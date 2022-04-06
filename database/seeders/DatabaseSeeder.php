@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         
-        Value::factory(200)->create();
+        //Value::factory(200)->create();
 
         foreach (self::$categories as $category) {
             DB::table('categories')->insert([
