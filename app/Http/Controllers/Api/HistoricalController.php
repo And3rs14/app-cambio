@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class HistoricalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,11 +33,15 @@ class HistoricalController extends Controller
     {
         $data = request()->validate([
             'info_value_id' => 'required|exists:info_values,id',
-            'user_id' => 'required|exists:users,id',
+            //'user_id' => 'required|exists:users,id',
         ]);
+
+        $user = auth()->user();
+        $data['user_id'] = $user->id;
+        
+
         $historicals = Historical::create([
-            'info_value_id' => $data['info_value_id'],
-            'user_id' => $data['user_id']
+            'info_value_id' => $data['info_value_id']
         ]);
         return $historicals;
     }
