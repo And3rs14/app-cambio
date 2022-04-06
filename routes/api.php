@@ -17,7 +17,7 @@ Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.reg
 
 Route::apiResource('categories', CategoryController::class)->names('api.v1.categories');
 Route::apiResource('values', ValueController::class)->names('api.v1.values');
-Route::apiResource('info_values', Info_valuesController::class)->names('api.v1.info_value');
+//Route::apiResource('info_values', Info_valuesController::class)->names('api.v1.info_value');
 Route::apiResource('historial', HistorialController::class)->names('api.v1.historial');
 
 

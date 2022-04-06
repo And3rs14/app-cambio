@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\User;
-use App\Models\Info_values;
+use App\Models\Values;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class historialFactory extends Factory
@@ -16,10 +16,10 @@ class historialFactory extends Factory
     {
         return [
             //
-            'fecha_consulta' => $this->faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
+            //'fecha_consulta' => $this->faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
 
             'user_id' => User::pluck('id')->random(),
-            'info_value_id' => Info_values::pluck('id')->random(),
+            'value_id' => Values::pluck('id')->random(),
         ];
     }
 }

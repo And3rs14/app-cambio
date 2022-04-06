@@ -16,15 +16,14 @@ class CreateHistorialsTable extends Migration
         Schema::create('historials', function (Blueprint $table) {
             $table->id();
             //$table->primary('historial_id');
+            
 
-            $table->dateTime('fecha_consulta');
 
-
-            $table->unsignedBigInteger('info_value_id');
+            $table->unsignedBigInteger('value_id');
             $table->unsignedBigInteger('user_id');
 
 
-            $table->foreign('info_value_id')->references('id')->on('info_values')->onDelete('cascade');
+            $table->foreign('value_id')->references('id')->on('values')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
