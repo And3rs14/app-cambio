@@ -46,9 +46,9 @@ class HistorialController extends Controller
      * @param  \App\Models\historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function show($historial)
+    public function show($id)
     {
-        $historial = historial::select('*')->where('id', $historial)->get();
+        $historial = historial::with('valores.categories')->findOrFail($id);
         return $historial;
     }
 

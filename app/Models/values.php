@@ -13,13 +13,13 @@ class Values extends Model
 
     //Relación de 1 a muchos 
     public function historials(){
-        return $this->hasMany(historials::class);
+        return $this->hasMany(historial::class,'value_id','id');
     }
 
     //Relacion 1 a muchos inversa
 
-    public function category(){
-        return $this->belongsTo(category::class);
+    public function categories(){
+        return $this->belongsTo(Category::class,'category_id','id');
     }
     
 }

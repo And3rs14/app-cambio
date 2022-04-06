@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     //relacion de 1 a muchos     
     public function historials(){
-        return $this->hasMany(historials::class);
+        return $this->hasMany(historial::class,'user_id','id');
     }
 }

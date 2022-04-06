@@ -44,12 +44,16 @@ class ValueController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Antes era public function show(values $values)
-    public function show($values)
+    public function show($id)
     {
-        $valor = values::select('*')->where('id', $values)->get();
-        
 
-        return $valor;
+        $value = Values::with('categories')->findOrFail($id);
+
+        
+        
+        return $value;
+        //$valor = value::select('*')->where('id', $values)->get();
+        //return $valor;
     }
 
     /**

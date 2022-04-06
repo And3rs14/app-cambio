@@ -44,9 +44,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //Muestra un registro segun el parametro enviado
+        $category = Category::with('valores.historials.users')->findOrFail($id);
         return $category;
     }
 

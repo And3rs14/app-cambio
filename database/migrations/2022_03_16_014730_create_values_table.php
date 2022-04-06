@@ -20,11 +20,13 @@ class CreateValuesTable extends Migration
             $table->float('sell_moneda');
             $table->float('buy_moneda');
             $table->date('date');
-            $table->timestamps();
+            
 
             $table->unsignedBigInteger('category_id');
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

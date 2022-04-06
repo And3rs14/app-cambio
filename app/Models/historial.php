@@ -13,10 +13,11 @@ class historial extends Model
 
     //Relacion 1 a muchos inversa
 
-    public function values(){
-        return $this->belongsTo(Values::class);
+    public function valores(){
+        return $this->belongsTo(Values::class,'value_id','id');
     }
+    
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

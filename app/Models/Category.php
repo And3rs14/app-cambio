@@ -15,7 +15,7 @@ class Category extends Model
 
 
     //Relación de 1 a muchos 
-    public function values(){
-        return $this->hasMany(Values::class);
+    public function valores(){
+        return $this->hasMany(Values::class,'category_id','id');
     }
 }
