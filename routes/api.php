@@ -2,10 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+Use App\Http\Controllers\Api\Info_valueController;
 Use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\CategoryController;
+Use App\Http\Controllers\Api\ValueController;
 
 Route::post('/register', [RegisterController::class, 'store'])->name('api.v1.register');
+
+Route::apiResource('categories', CategoryController::class)->names('api.v1.categories');
+Route::apiResource('values', ValueController::class)->names('api.v1.values');
+
+Route::apiResource('info_values', Info_valueController::class)->names('api.v1.info_values');
 
 /*
 |--------------------------------------------------------------------------

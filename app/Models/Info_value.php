@@ -18,7 +18,7 @@ class Info_value extends Model
     }
 
      //Relacion 1 a muchos inversa
-     public function category(){
+     public function categories(){
         return $this->belongsTo(Category::class);
     }
     public function values(){

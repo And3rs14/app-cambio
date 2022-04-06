@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Info_value;
 use Illuminate\Http\Request;
-
+use App\Models\Category;
 class Info_valueController extends Controller
 {
     /**
@@ -44,11 +44,11 @@ class Info_valueController extends Controller
      * @param  \App\Models\Info_value  $info_value
      * @return \Illuminate\Http\Response
      */
-    public function show($info_values)
+    public function show($id)
     {
-        $info_value =Info_value::findOrFail($info_values);
-        //$info_values = Info_value::select('*')->where('id', $info_values)->get();
+        $info_value = Info_value::with('categories')->findOrFail($id);
         return $info_value;
+
     }
 
     /**

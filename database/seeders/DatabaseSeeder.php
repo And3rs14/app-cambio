@@ -45,8 +45,6 @@ class DatabaseSeeder extends Seeder
         foreach (self::$categories as $category) {
             DB::table('categories')->insert([
                 'name' => $category,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
             ]);
         }
         
