@@ -26,7 +26,22 @@ class AuthController extends Controller
             'user' => $user,
             'accessToken' => $accessToken
         ]);
+    }
 
+
+    public function login(Request $request)
+    {
+        $user = User::select('*')->where('email', $request->email)->first();
+
+        if (!is_null($user) && Hash::check($request->password, $user->password)) {
+            
+            $accessToken = $user->createToken('authToken')->accessToken;
+
+            return response(['user' => $user, 'access_token' => $accessToken]);
+        }
+        else {
+            return response(['message'=> 'Invalid Credentials']);
+        }
         
     }
 }
