@@ -45,6 +45,7 @@ class HistoricalController extends Controller
         ]);
         return $historicals;
     }
+    
 
     /**
      * Display the specified resource.

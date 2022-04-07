@@ -7,10 +7,15 @@ use App\Models\Info_value;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Date;
-
+use App\Models\Historical;
+use App\Models\User;
 
 class Info_valueController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -30,12 +35,16 @@ class Info_valueController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+
         $data = request()->validate([
             'sell_moneda' => 'required|numeric|between:0.00,99.99',
             'buy_moneda' => 'required|numeric|between:0.00,99.99',
             'category_id' => 'required|exists:categories,id',
             'date' => 'required|date_format:Y-m-d',
         ]);
+
+
         
         $date = Date::create([
             'date' => $data['date'],
@@ -47,6 +56,7 @@ class Info_valueController extends Controller
             'category_id' => $data['category_id'],
             'date_id' => $date->id,
         ]);
+        
         
 
         //$info_values = Info_value::create($request->all());

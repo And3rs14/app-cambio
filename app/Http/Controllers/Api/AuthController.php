@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 Use App\Models\User;
+use Facade\FlareClient\Http\Response;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -44,4 +47,17 @@ class AuthController extends Controller
         }
         
     }
+
+    public function logout(Request $request)
+    {
+        
+        
+        $request->user()->token()->revoke();
+        
+        //['message'=> 'Usted se deslogueo']
+         
+        return response(['message'=> 'Usted se deslogueo']);
+    }
+
+    
 }
