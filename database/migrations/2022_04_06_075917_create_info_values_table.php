@@ -18,12 +18,16 @@ class CreateInfoValuesTable extends Migration
 
             $table->float('sell_moneda');
             $table->float('buy_moneda');
-            
+
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('date_id');
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('date_id')->references('id')->on('dates')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->timestamps();
             
             //$table->timestamps();
         });

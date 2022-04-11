@@ -41,20 +41,22 @@ class Info_valueController extends Controller
             'sell_moneda' => 'required|numeric|between:0.00,99.99',
             'buy_moneda' => 'required|numeric|between:0.00,99.99',
             'category_id' => 'required|exists:categories,id',
-            'date' => 'required|date_format:Y-m-d',
+            'date' => 'required|date_format:Y-m-d|before:tomorrow'
         ]);
+        $date = Date::select('*')->where('date', $data['date'])->first();
 
-
+        if (is_null($date)) {
+            $date = Date::create([
+                'date' => $data['date'],
+            ]);
+        }
         
-        $date = Date::create([
-            'date' => $data['date'],
-            //'info_value_id' => $info_value->id, 
-        ]);
         $info_values = Info_value::create([
             'sell_moneda' => $data['sell_moneda'],
             'buy_moneda' => $data['buy_moneda'],
             'category_id' => $data['category_id'],
             'date_id' => $date->id,
+            'user_id' => $user->id
         ]);
         
         
@@ -73,7 +75,7 @@ class Info_valueController extends Controller
      */
     public function show($id)
     {
-        $info_value = Info_value::with('categories')->findOrFail($id);
+        $info_value = Info_value::with('users')->findOrFail($id);
         return $info_value;
 
     }

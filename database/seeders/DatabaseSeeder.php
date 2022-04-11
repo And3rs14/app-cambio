@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
 
         
 
-        Historical::factory(200)->create();
+        //Historical::factory(200)->create();
         
     }
 }
