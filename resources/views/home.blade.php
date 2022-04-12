@@ -36,8 +36,8 @@
 
                 <div class="row d-flex justify-content-center">
                     <div class="col-xs-6">
-                        <table id="info_values" class="table table-striped table-white mt-5 " style="text-align:center">
-                            <thead>
+                        <table id="info_values" class="table table-striped table-bordered shadow-lg mt-4" style="text-align:center">
+                            <thead class="bg-primary text-white">
                                 <th>ID</th>
                                 <th>Moneda</th>
                                 <th>Precio compra</th>
