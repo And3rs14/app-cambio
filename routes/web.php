@@ -21,4 +21,6 @@ Route::get('/', [App\Http\Controllers\Api\Info_valueController::class, 'index'])
 
 Auth::routes();
 
+Route::resource('info_values', 'App\Http\Controllers\Api\Info_valueController');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

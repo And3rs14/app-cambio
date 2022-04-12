@@ -13,8 +13,11 @@ class DateFactory extends Factory
      */
     public function definition()
     {
+        $dt = $this->faker->dateTimeBetween($startDate = '-20 years', $endDate = 'now', $timezone = null);
         return [
-            'date' => $this->faker->dateTimeBetween($startDate = '-20 years', $endDate = 'now', $timezone = null),
+
+            'date' =>$dt->format("Y-m-d"),
+            
         ];
     }
 }
