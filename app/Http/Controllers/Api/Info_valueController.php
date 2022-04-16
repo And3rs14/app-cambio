@@ -8,7 +8,7 @@ use App\Models\Date;
 use App\Models\Info_value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Rules\Daterepeat;
 class Info_valueController extends Controller
 {
     /**
@@ -45,24 +45,34 @@ class Info_valueController extends Controller
      */
     public function store(Request $request)
     {
+        //$categorias = 2;
 
         $id = Auth::id();
 
         $data = request()->validate([
-            'sell_moneda' => 'required|numeric|between:0.00,99.99',
-            'buy_moneda' => 'required|numeric|between:0.00,99.99',
+            'sell_moneda' => 'required|numeric|between:0.01,99.99',
+            'buy_moneda' => 'required|numeric|between:0.01,99.99',
             'category_id' => 'required|exists:categories,id',
-            'date' => 'required|date_format:Y-m-d|before:tomorrow'
-        ]);
+            'date' => ['required','date_format:Y-m-d','before:tomorrow', new Daterepeat()]
+        ],
+        [
+            'sell_moneda.required' => 'Ingrese un dato',
+            'buy_moneda.required' => 'Ingrese un dato',
+            'category_id.required' => 'Seleccione una categoria',
+            'date.required' => 'Ingrese una fecha',
+            'sell_moneda.numeric' => 'Ingrese un número',
+            'sell_moneda.numeric' => 'Ingrese un número',
+            'category_id.exists' => 'Esa categoria no existe',
+            'date.date_format' => 'Ingrese una fecha en formato Y-m-d',
+            'sell_moneda.beetween' => 'Ingrese un número positivo',
+            'buy_moneda.beetween' => 'Ingrese un número positivo',
+            'date.before' => 'Ingrese una fecha anterior a mañana',
+        ]
+        
+        );
 
         $date = Date::select('*')->where('date', $data['date'])->first();
 
-        if (is_null($date)) {
-            $date = Date::create([
-                'date' => $data['date'],
-            ]);
-        }
-        
         Info_value::create([
             'sell_moneda' => $data['sell_moneda'],
             'buy_moneda' => $data['buy_moneda'],
@@ -70,12 +80,12 @@ class Info_valueController extends Controller
             'date_id' => $date->id,
             'user_id' => $id
         ]);
+        
+        // return sizeof($b);
 
         return redirect('/home');
         //return view('appCambio.create', compact('info_values'));
     }
-
-    
 
     /**
      * Display the specified resource.
@@ -116,11 +126,26 @@ class Info_valueController extends Controller
         $id = Auth::id();
 
         $data = request()->validate([
+            'id' => 'required|numeric',
             'sell_moneda' => 'required|numeric|between:0.00,99.99',
             'buy_moneda' => 'required|numeric|between:0.00,99.99',
             'category_id' => 'required|exists:categories,id',
-            'date' => 'required|date_format:Y-m-d',
-        ]);
+            'date' => ['required','date_format:Y-m-d','before:tomorrow', new Daterepeat()],
+        ],
+        [
+            'sell_moneda.required' => 'Ingrese un dato',
+            'buy_moneda.required' => 'Ingrese un dato',
+            'category_id.required' => 'Seleccione una categoria',
+            'date.required' => 'Ingrese una fecha',
+            'sell_moneda.numeric' => 'Ingrese un número',
+            'sell_moneda.numeric' => 'Ingrese un número',
+            'category_id.exists' => 'Esa categoria no existe',
+            'date.date_format' => 'Ingrese una fecha en formato Y-m-d',
+            'sell_moneda.beetween' => 'Ingrese un número positivo',
+            'buy_moneda.beetween' => 'Ingrese un número positivo',
+            'date.before' => 'Ingrese una fecha anterior a mañana',
+        ]
+        );
 
         $date->date = $data['date'];
         $info_value->sell_moneda = $data['sell_moneda'];
@@ -146,7 +171,15 @@ class Info_valueController extends Controller
      */
     public function destroy($id)
     {
+
         $info_value = Info_value::find($id);
+        $date = Date::where('id', $info_value->date_id);
+        $references = Info_value::all()->where('date_id', $info_value->date_id);
+        $categorias = 2;
+
+        if (sizeof($references) < $categorias) {
+            $date->delete();
+        }
 
         $info_value->delete();
 
