@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Editar')
 
 @section('content')
 <div class="container mt-5">
@@ -7,7 +9,7 @@
     <div  class="p-5 bg-white rounded shadow-lg col-md-6 mx-auto">
 
     <!-- {{$errors}} -->
-    <form action="/info_values/{{$info_value->id}}" method="post" class="row g-3 needs-validation"> 
+    <form action="/info_values/{{$info_value->id}}" method="post"> 
         @csrf
         @method('PUT')
 
@@ -47,11 +49,11 @@
                 </span>
             @enderror
         </div>
-    
-        <a href="/home" class="btn btn-secondary">Cancelar</a>
+        <div class="text-center ">
+            <a href="/home" class="btn btn-secondary">Cancelar</a>
 
-        <button href="/info_values" type="submit" class="btn btn-primary">Guardar</button>
-
+            <button href="/info_values" type="submit" class="btn btn-primary">Guardar</button>
+        <div>
     </form>
 
     </div>

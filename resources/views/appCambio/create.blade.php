@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Crear')
 
 @section('content')
-<div class="container mt-5" >
-    <div id="row">
-    <h2 class="text-center mt-4">INGRESAR TIPO DE CAMBIO DE SOLES (S/.)</h2>
+<h2 class="text-center mt-4">INGRESAR TIPO DE CAMBIO DE SOLES (S/.)</h2>
 
     <div  class="p-5 bg-white rounded shadow-lg col-md-6 mx-auto " >
     
@@ -15,7 +15,7 @@
     </span>
     </div> -->
     
-    <form action="/info_values" method="post" class="row g-3 needs-validation" >
+    <form action="/info_values" method="post" >
         @csrf
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label">Moneda</label>
@@ -61,16 +61,17 @@
                 </span>
             @enderror
         </div>
-    
-        <a href="/home" class="btn btn-secondary">Cancelar</a>
+        
+        <div class="text-center ">
 
-        <button href="/info_values" type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/home" class="btn btn-secondary">Cancelar</a>
+
+            <button href="/info_values" type="submit" class="btn btn-primary">Guardar</button>
+        <div>
 
     </form>
 
     </div>
-</div>
-</div>
 
 
 

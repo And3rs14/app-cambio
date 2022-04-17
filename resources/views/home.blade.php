@@ -1,11 +1,19 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Home')
 
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
 @endsection
 
-@section('content')
+
+@section('content_header')
 <h1 class="bg-primary text-white text-center">VALORES DEL TIPO DE CAMBIO (SOLES S/.)</h1>
+@stop
+
+
+@section('content')
+
 
 <div class="container">
     <div class="row justify-content-center">

@@ -12,10 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -27,11 +24,9 @@ class HomeController extends Controller
         $info_values = Info_value::join("categories","categories.id", "=", "info_values.category_id")
         ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda")
         ->join("dates","dates.id", "=", "info_values.date_id")
-        ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda","dates.date")
-        ->join("users","users.id", "=", "info_values.user_id")
-        ->select("info_values.id","categories.name as category","info_values.sell_moneda","info_values.buy_moneda","dates.date","users.name as user")
-        ->get();
+        ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda","dates.date")->get();
+        
 
-        return view('home', compact('info_values'));
+        return view('welcome', compact('info_values'));
     }
 }

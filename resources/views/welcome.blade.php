@@ -1,5 +1,7 @@
 @extends('layouts.plantillabase')
 
+
+
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
 @endsection
@@ -51,7 +53,7 @@
             @endif
 
             
-            <div class="mt-8 bg-white dark:bg-white-800 overflow-hidden shadow sm:rounded-lg">
+            <div class="mt-5 bg-white dark:bg-white-800 overflow-hidden shadow sm:rounded-lg">
             <div class="container" >
                 <div class="row d-flex justify-content-center">
                     <div class="col-xs-6">

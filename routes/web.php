@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [App\Http\Controllers\Api\Info_valueController::class, 'index']);
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/home', [App\Http\Controllers\Api\Info_valueController::class, 'index'])->name('home');
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -23,4 +26,4 @@ Auth::routes();
 
 Route::resource('info_values', 'App\Http\Controllers\Api\Info_valueController');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
