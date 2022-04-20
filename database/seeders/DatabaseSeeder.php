@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        //User::factory(10)->create();
+        User::factory(10)->create();
         
         //Value::factory(200)->create();
 
@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
                 'name' => $category,
             ]);
         }
-        //Date::factory(200)->create();
+        Date::factory(50)->create();
         
-        //Info_value::factory(200)->create();
+        Info_value::factory(100)->create();
     }
 }

@@ -13,7 +13,7 @@ class DateFactory extends Factory
      */
     public function definition()
     {
-        $dt = $this->faker->dateTimeBetween($startDate = '-20 years', $endDate = 'now', $timezone = null);
+        $dt = $this->faker->unique()->dateTimeBetween($startDate = '-20 years', $endDate = 'now', $timezone = null);
         return [
 
             'date' =>$dt->format("Y-m-d"),

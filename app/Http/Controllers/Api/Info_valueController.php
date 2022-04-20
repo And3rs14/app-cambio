@@ -9,6 +9,8 @@ use App\Models\Info_value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\Daterepeat;
+use Illuminate\Support\Facades\DB;
+
 class Info_valueController extends Controller
 {
 
@@ -194,5 +196,24 @@ class Info_valueController extends Controller
         //Info_value::destroy($id);
         
         return redirect('/home');
+    }
+
+    public function chart()
+    {
+        //$array_resultante= array_merge($array1,$array2);
+        $dolar = Info_value::join("categories","categories.id", "=", "info_values.category_id")
+        ->join("dates","dates.id", "=", "info_values.date_id")
+        ->select("info_values.sell_moneda as sell_moneda","info_values.buy_moneda as buy_moneda","dates.date as date")
+        ->where("categories.id",1)->orderBy('date', 'ASC')->get();
+
+        $euro = Info_value::join("categories","categories.id", "=", "info_values.category_id")
+        ->join("dates","dates.id", "=", "info_values.date_id")
+        ->select("info_values.sell_moneda as sell_moneda","info_values.buy_moneda as buy_moneda","dates.date as date")
+        ->where("categories.id",2)->orderBy('date', 'ASC')->get();
+        
+        //$info_values = array_merge($dolar,$euro);
+        $info_values = [1 => $dolar, 2 => $euro];
+        //$info_values = Info_value::all();
+        return view('appCambio.chart', compact('info_values'));
     }
 }

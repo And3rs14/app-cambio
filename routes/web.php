@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('info_values/chart', [App\Http\Controllers\Api\Info_valueController::class, 'chart'])->name('info_values.chart');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\Api\Info_valueController::class, 'index'])->name('home');
+
+
 
 // Route::get('/', function () {
 //     return view('welcome');

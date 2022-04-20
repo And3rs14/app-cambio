@@ -40,11 +40,20 @@
 <div class="mt-8 bg-white dark:bg-white-800 overflow-hidden shadow sm:rounded-lg">
 
             <div class="container" >
-            <a href="info_values/create" class="btn btn-primary">CREAR</a>
 
-                <div class="row d-flex justify-content-center">
+            <div class="card-header">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a class="btn btn-success" href="{{url('/info_values/chart')}}">Gráfica</a>
+                <a href="info_values/create" class="btn btn-primary">CREAR</a>
+                </div>
+            
+            </div>
+            
+            
+
+                <div class="car-body">
                     <div class="col-xs-6">
-                        <table id="info_values" class="table table-striped table-bordered  shadow-lg mt-4" style="text-align:center">
+                        <table id="info_values" class="table table-striped" >
                             <thead class="bg-primary text-white">
                                 <th>ID</th>
                                 <th>Moneda</th>
