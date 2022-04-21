@@ -253,12 +253,12 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'VALORES'],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Crear',
+            'url'         => 'http://app-cambio.io/info_values/create',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            
         ],
         ['header' => 'account_settings'],
         [
