@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+@section('title', 'Gráfica')
+
 @section('content')
 
 <!-- <?php echo json_encode($info_values); ?> -->
@@ -8,8 +10,16 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+
+<script src="https://code.highcharts.com/modules/data.js"></script>
+
+
 <figure class="highcharts-figure">
   <div id="container">
+
+
+  </div>
+  <div id="master-container">
 
 
   </div>
@@ -61,6 +71,7 @@
 
     }
 
+    
 
     
     //let fecha = new Date('2022-04-15')
@@ -74,56 +85,84 @@
     
 Highcharts.chart('container', {
   chart: {
-    marginBottom: 120,
-          reflow: false,
-          marginLeft: 50,
-          marginRight: 20,
-          style: {
-            position: 'absolute'
-          }
+    //type: 'spline',
+    style: {
+      position: 'absolute'
+    },
+    zoomType: 'x',
+    
+    
+       
   },
   title:{
       text: 'Tipo de cambio de soles'
   },
   subtitle:{},
   xAxis: {
-    type: 'datetime'
+    type: 'datetime',
+    crosshair: true,
   },
   yAxis: {
       title:{
           text: 'Valores'
       },
-      maxZoom: 0.1
+      maxZoom: 0.1,
+      crosshair: true
   },
   legend: {
     layout: 'horizontal',
     
   },
   plotOptions: {
-      series: {
-          allowPointSelect: true
-      }
+    series: {
+            marker: {
+                enabled: true,
+                lineWidth: 1,
+                lineColor: null,
+                radius: 2,
+                symbol: 'circle' ,
+            }
+        }
   },
-  series: [{
-      name:'USD to PEN Venta',
-      data: dolar_venta
-  },{
-      name:'USD to PEN Compra',
-      data: dolar_compra
-  },{
-      name:'EUR to PEN Venta',
-      data: euro_venta
-  },{
-      name:'EUR to PEN Compra',
-      data: euro_compra
-  }],
-  reponsive: {
+  tooltip: {
+   
+    headerFormat: '<b> {series.name} </b> <br/>{point.x:%A %B %e %Y}<br/>',
+    pointFormat: '<span style="color:{point.color}">\u25CF</span>'+ '<b>1 PEN = {point.y} {series.name}</b><br>',
+    crosshairs: true,
 
   },
+  series: [{
+      name:'USD Venta',
+      data: dolar_venta,
+      tooltip: {
+        valueSuffix: ' $'
+      },
+      
+  },{
+      name:'USD Compra',
+      data: dolar_compra,
+      tooltip: {
+        valueSuffix: ' $'
+      }
+  },{
+      name:'EUR Venta',
+      data: euro_venta,
+      tooltip: {
+        valueSuffix: ' €'
+      }
+  },{
+      name:'EUR Compra',
+      data: euro_compra,
+      tooltip: {
+        valueSuffix: ' €'
+      }
+  }],
+  
 
 });
 
 </script>
+
 
 
 @endsection
