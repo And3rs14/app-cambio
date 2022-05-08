@@ -14,15 +14,13 @@
 <script src="https://code.highcharts.com/modules/data.js"></script>
 
 
+
 <figure class="highcharts-figure">
   <div id="container">
 
 
   </div>
-  <div id="master-container">
-
-
-  </div>
+  
   <p class="highcharts-description">
     This chart shows how data labels can be added to the data series. This
     can increase readability and comprehension for small datasets.
@@ -158,11 +156,13 @@ Highcharts.chart('container', {
       }
   }],
   
+  
 
 });
 
-</script>
 
+
+</script>
 
 
 @endsection

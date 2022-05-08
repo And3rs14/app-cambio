@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+
 @endsection
 
 <!DOCTYPE html>
@@ -17,7 +18,9 @@
         <!-- Fonts -->
         <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
         <!-- Styles -->
         <style>
@@ -36,25 +39,38 @@
     <br />
     <h3 align="center">APP de tipo de cambio</h3>
     <br />
-    
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                            <i class="material-icons">home</i> {{ __('Inicio') }}
+                        </a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                                <i class="material-icons">person</i> {{ __('Ingresar') }}
+                            </a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline ">
+                                <i class="material-icons">person_add</i> {{ __('Registrar') }}
+                            </a>
                         @endif
                     @endauth
                 </div>
             @endif
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0" filter-color="black" style="background: rgba(0, 0, 0, 0.7) url('{{ asset('img/fondo-moneda.jpg') }}');; background-size: cover; background-position: top center;align-items: center; background-blend-mode: saturation; " data-color="red">
+            
 
             
-            <div class="mt-5 bg-white dark:bg-white-800 overflow-hidden shadow sm:rounded-lg">
+            <div class="mt-5 bg-white dark:bg-white-800 overflow-hidden shadow sm:rounded-lg" style="position: relative;">
             <div class="container" >
+
+            <div class="card-header">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a class="btn btn-success" href="{{url('/info_values/chart')}}">Gráfica</a>
+                <a href="info_values/create" class="btn btn-primary">CREAR</a>
+                </div>
+            
+            </div>
                 <div class="row d-flex justify-content-center">
                     <div class="col-xs-6">
                         <table id="info_values" class="table table-striped table-bordered shadow-lg mt-4 " style="text-align:center">
