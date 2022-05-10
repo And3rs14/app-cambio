@@ -225,7 +225,11 @@ class Info_valueController extends Controller
     
     public function ExportarDatos(Request $request){
 
-        $filename = "Cambio.csv";
+        $date = date_create();
+        $cadena_fecha_actual = date_format($date, 'Y-m-d H:i:s');
+
+
+        $filename = "Tipo de cambio {$cadena_fecha_actual}.csv";
         //$datos = Info_value::all();
         $datos = Info_value::join("categories","categories.id", "=", "info_values.category_id")
         ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda")
@@ -257,4 +261,7 @@ class Info_valueController extends Controller
         };
         return response()->stream($callback, 200, $headers);
     }
+
+
+    
 }
