@@ -57,7 +57,7 @@
           </div>
          
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg" style="color: #2450aa;">{{ __('Ingresar') }}</button>
+            <button onclick= "refreshPage()" type="submit" class="btn btn-primary btn-link btn-lg" style="color: #2450aa;">{{ __('Ingresar') }}</button>
           </div>
         </div>
       </form>
@@ -78,4 +78,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  function refreshPage() {
+    window.location.reload
+  }
+
+</script>
 @endsection

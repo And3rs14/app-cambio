@@ -57,62 +57,69 @@
                     @endauth
                 </div>
             @endif
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0" filter-color="black" style="background: rgba(0, 0, 0, 0.7) url('{{ asset('img/fondo-moneda.jpg') }}');; background-size: cover; background-position: top center;align-items: center; background-blend-mode: saturation; " data-color="red">
-            
+            <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0" filter-color="black" style="background: rgba(0, 0, 0, 0.7) url('{{ asset('img/fondo-moneda.jpg') }}');; background-size: cover; background-position: top center;align-items: center; background-blend-mode: saturation; " data-color="red">
+                
 
-            
-            <div class="mt-5 bg-white dark:bg-white-800 overflow-hidden shadow sm:rounded-lg" style="position: relative;">
-            <div class="container" >
+                
+                <div class="mt-5 bg-white dark:bg-white-800 overflow-hidden shadow sm:rounded-lg" style="position: relative;">
+                <div class="container" >
 
-            <div class="card-header">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-success" href="{{url('/info_values/chart')}}">Gráfica</a>
-                <a href="info_values/create" class="btn btn-primary">CREAR</a>
+                <div class="card-header">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-success" href="{{url('/info_values/chart')}}">Gráfica</a>
+                    <a href="info_values/create" class="btn btn-primary">CREAR</a>
+                    @if (Route::has('login'))
+                        @auth
+                        <span onclick="ExportarDatos(event.target)" data-href="/ExportarDatos" id="export" class="btn btn-info">Exportar a CSV<span>
+                        @else
+                        <span onclick="ExportarDatos(event.target)" data-href="/home"  id="export" class="btn btn-info">Exportar a CSV<span>
+                        @endauth
+                @endif             
                 </div>
             
-            </div>
-                <div class="row d-flex justify-content-center">
-                    <div class="col-xs-6">
-                        <table id="info_values" class="table table-striped table-bordered shadow-lg mt-4 " style="text-align:center">
-                            <thead class="bg-primary text-white">
-                                <th>ID</th>
-                                <th>Moneda</th>
-                                <th>Precio compra</th>
-                                <th>Precio Venta</th>
-                                <th>Fecha</th>
-                            </thead>
-                            <tbody>
-                                @foreach($info_values as $info_value)
-                                    <tr>
+                </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-xs-6">
+                            <table id="info_values" class="table table-striped table-bordered shadow-lg mt-4 " style="text-align:center">
+                                <thead class="bg-primary text-white">
+                                    <th>ID</th>
+                                    <th>Moneda</th>
+                                    <th>Precio compra</th>
+                                    <th>Precio Venta</th>
+                                    <th>Fecha</th>
+                                </thead>
+                                <tbody>
+                                    @foreach($info_values as $info_value)
+                                        <tr>
 
-                                        <td>{{$info_value->id}}</td>
-                                        <td>{{$info_value->name}}</td>
-                                        <td>{{$info_value->buy_moneda}}</td>
-                                        <td>{{$info_value->sell_moneda}}</td>
-                                        <td>{{$info_value->date}}</td>
-                                        
-                                    </tr>
-                                @endforeach
+                                            <td>{{$info_value->id}}</td>
+                                            <td>{{$info_value->name}}</td>
+                                            <td>{{$info_value->buy_moneda}}</td>
+                                            <td>{{$info_value->sell_moneda}}</td>
+                                            <td>{{$info_value->date}}</td>
+                                            
+                                        </tr>
+                                    @endforeach
 
-                            </tbody>
-                        </table>
-                        @section('js')
-                            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-                            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-                            <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+                                </tbody>
+                            </table>
+                            @section('js')
+                                <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                                <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                                <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
-                            <script>
-                                $(document).ready(function() {
-                                    $('#info_values').DataTable();
-                                } );
-                                
-                            </script>
-                        @endsection
-                        
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#info_values').DataTable();
+                                    } );
+                                    
+                                </script>
+                            @endsection
+                            
+                        </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
             
             </div>
         </div>
@@ -120,4 +127,9 @@
     </body>
     
 </html>
-
+<script>
+        function ExportarDatos(_this){
+            let _url = $(_this).data('href');
+            window.location.href = _url;
+        }
+</script>

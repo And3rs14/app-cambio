@@ -30,4 +30,5 @@ Auth::routes();
 
 Route::resource('info_values', 'App\Http\Controllers\Api\Info_valueController');
 
+Route::get('/ExportarDatos', [App\Http\Controllers\Api\Info_valueController::class, 'ExportarDatos']) ->name('/ExportarDatos');
 

@@ -216,4 +216,47 @@ class Info_valueController extends Controller
         //$info_values = Info_value::all();
         return view('appCambio.chart', compact('info_values'));
     }
+
+    //Descargar Archivo CSV
+    
+    public function ExportarDatos(Request $request){
+
+        $date = date_create();
+        $cadena_fecha_actual = date_format($date, 'Y-m-d H:i:s');
+
+
+        $filename = "Tipo de cambio {$cadena_fecha_actual}.csv";
+        //$datos = Info_value::all();
+        $datos = Info_value::join("categories","categories.id", "=", "info_values.category_id")
+        ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda")
+        ->join("dates","dates.id", "=", "info_values.date_id")
+        ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda","dates.date")->get();
+        $headers = array(
+            "contend-type" => "text/csv",
+            "content-Disposition" => "attachment; filename = $filename",
+            "Program" =>"no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+
+        $columns = array ("Venta ", "Compra ", "Tipo ", "Fecha");
+        $callback = function() use($datos, $columns)
+        { 
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($datos as $dato) {
+                $row['sell_modena'] = $dato->sell_moneda;
+                $row['buy_moneda'] = $dato->buy_moneda;
+                $row['category'] = $dato->name;
+                $row['date'] = $dato->date;
+
+                fputcsv($file, array($row['sell_modena'], $row['buy_moneda'], $row['category'],  $row['date']));
+            }
+            fclose($file);
+        };
+        return response() -> stream($callback, 200, $headers);
+        
+    }
+
 }

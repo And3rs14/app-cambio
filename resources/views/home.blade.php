@@ -45,6 +45,7 @@
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a class="btn btn-success" href="{{url('/info_values/chart')}}">Gráfica</a>
                 <a href="info_values/create" class="btn btn-primary">CREAR</a>
+                <span onclick="ExportarDatos(event.target)" data-href="/ExportarDatos" id="export" class="btn btn-info">Exportar a CSV<span>
                 </div>
             
             </div>
@@ -112,5 +113,11 @@
             
             </div>
 
+    <script>
+        function ExportarDatos(_this){
+            let _url = $(_this).data('href');
+            window.location.href = _url;
+        }
+    </script>
 
 @endsection
