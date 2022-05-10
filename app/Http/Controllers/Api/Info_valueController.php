@@ -226,7 +226,11 @@ class Info_valueController extends Controller
     public function ExportarDatos(Request $request){
 
         $filename = "Cambio.csv";
-        $datos = Info_value::all();
+        //$datos = Info_value::all();
+        $datos = Info_value::join("categories","categories.id", "=", "info_values.category_id")
+        ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda")
+        ->join("dates","dates.id", "=", "info_values.date_id")
+        ->select("info_values.id","categories.name","info_values.sell_moneda","info_values.buy_moneda","dates.date")->get();
         $headers = array(
             "contend-type" => "text/csv",
             "content-Disposition" => "attachment; filename = $filename",
@@ -242,12 +246,12 @@ class Info_valueController extends Controller
             fputcsv($file, $columns);
 
             foreach ($datos as $dato) {
-                $row['sell_modena'] = $dato->sell_modeda;
-                $row['buy_moneda'] = $dato->buy_modeda;
-                $row['category_id'] = $dato->category_id;
-                $row['date_id'] = $dato->date_id;
+                $row['sell_modena'] = $dato->sell_moneda;
+                $row['buy_moneda'] = $dato->buy_moneda;
+                $row['category'] = $dato->name;
+                $row['date'] = $dato->date;
 
-                fputcsv($file, array($row['sell_modena'], $row['buy_moneda'], $row['category_id'],  $row['date_id']));
+                fputcsv($file, array($row['sell_modena'], $row['buy_moneda'], $row['category'],  $row['date']));
             }
             fclose($file);
         };
