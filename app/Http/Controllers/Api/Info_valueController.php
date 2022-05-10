@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Rules\Daterepeat;
 use Illuminate\Support\Facades\DB;
 
+
 class Info_valueController extends Controller
 {
 
@@ -18,11 +19,13 @@ class Info_valueController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
+
     public function index()
     {
         //$info_values = Info_value::all();
@@ -215,5 +218,39 @@ class Info_valueController extends Controller
         $info_values = [1 => $dolar, 2 => $euro];
         //$info_values = Info_value::all();
         return view('appCambio.chart', compact('info_values'));
+    }
+
+
+    //Descargar Archivo CSV
+    
+    public function ExportarDatos(Request $request){
+
+        $filename = "Cambio.csv";
+        $datos = Info_value::all();
+        $headers = array(
+            "contend-type" => "text/csv",
+            "content-Disposition" => "attachment; filename = $filename",
+            "Program" =>"no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+
+        $columns = array ("Venta ", "Compra ", "Tipo ", "Fecha");
+        $callback = function() use($datos, $columns)
+        { 
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($datos as $dato) {
+                $row['sell_modena'] = $dato->sell_modeda;
+                $row['buy_moneda'] = $dato->buy_modeda;
+                $row['category_id'] = $dato->category_id;
+                $row['date_id'] = $dato->date_id;
+
+                fputcsv($file, array($row['sell_modena'], $row['buy_moneda'], $row['category_id'],  $row['date_id']));
+            }
+            fclose($file);
+        };
+        return response()->stream($callback, 200, $headers);
     }
 }

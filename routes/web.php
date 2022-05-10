@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\Api\Info_valueController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/ExportarDatos', [App\Http\Controllers\Api\Info_valueController::class, 'ExportarDatos']) ->name('/ExportarDatos');
 
 Route::get('info_values/chart', [App\Http\Controllers\Api\Info_valueController::class, 'chart'])->name('info_values.chart');
 

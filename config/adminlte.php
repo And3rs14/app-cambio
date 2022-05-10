@@ -241,7 +241,17 @@ return [
             'text' => 'INICIO',
             'url' => 'http://app-cambio.io/',
             'topnav'=> true,
+
+            /*
+            [
+                type => "button",
+                onclick => "history.back()",
+                name => "Volver",
+                value =>"Atrás"
+            ],
+            */
         ],
+        
 
         // Sidebar items:
         [
@@ -260,6 +270,13 @@ return [
             'icon'        => 'far fa-fw fa-file',
             
         ],
+        [
+            'text'        => 'Gráfica',
+            'url'         => 'http://app-cambio.io/info_values/chart',
+            'icon'        => 'nav-icon fas fa-chart-line',
+            
+        ],
+        
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
