@@ -37,9 +37,29 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
         <br />
-            <h3  align="center">APP de tipo de cambio</h3>
-        <br />
-            
+    <h3 align="center" href="http://app-cambio.io/">APP de tipo de cambio</h3>
+    <a href="http://app-cambio.io/" class="text-sm text-gray-700 dark:text-gray-500 underline">
+        <i class="material-icons">home</i> {{ __('Inicio') }}
+    </a>
+    <br />
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                            <i class="material-icons">home</i> {{ __('Inicio') }}
+                        </a>
+                    @else
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                                <i class="material-icons">person</i> {{ __('Ingresar') }}
+                            </a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline ">
+                                <i class="material-icons">person_add</i> {{ __('Registrar') }}
+                            </a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0" filter-color="black" style="background: rgba(0, 0, 0, 0.7) url('{{ asset('img/fondo-moneda.jpg') }}');; background-size: cover; background-position: top center;align-items: center; background-blend-mode: saturation; " data-color="red">
                 
             <div class="mt-5 dark:bg-white-800 overflow-hidden shadow sm:rounded-lg" style="position: relative; background: #585858;">
