@@ -20,6 +20,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\Api\Info_valueController::class, 'index'])->name('home');
 
+Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about_us'])->name('about-us');
 
 
 // Route::get('/', function () {

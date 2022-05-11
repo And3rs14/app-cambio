@@ -3,7 +3,7 @@
         <nav class="float-left">
         <ul>
             <li>
-            <a href="#">
+            <a href="/about-us">
                 {{ __('Acerca de nosotros') }}
             </a>
             </li>

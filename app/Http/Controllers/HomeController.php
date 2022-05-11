@@ -29,4 +29,10 @@ class HomeController extends Controller
 
         return view('welcome', compact('info_values'));
     }
+
+    
+    public function about_us()
+    {
+        return view('/about-us');
+    }
 }
