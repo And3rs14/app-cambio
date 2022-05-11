@@ -66,8 +66,9 @@
                 <div class="container" >
                     <section class="pb-5 position-relative bg-gradient-dark mx-n3">
                         <div class="col-md-8 text-start mb-5 mt-5">
-                            <h3 class="text-white z-index-1 position-relative">Grupo de trabajo 08</h3>
-                            <p class="text-white opacity-8 mb-0">App Información del tipo de cambio Dolar/Euro en Perú con historial.</p>
+                            <h1 class="text-white z-index-1 position-relative">Grupo de trabajo 08</h1>
+                            <br>
+                            <p class="text-white opacity-8 mb-0" style="size"><H2 style="color: white">App Información del tipo de cambio Dolar/Euro en Perú con historial.</H2></p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-12">
@@ -83,8 +84,8 @@
                                         <div class="col-lg-8 col-md-6 col-12 my-auto ">
                                             <div class="card-body ps-lg-0">
                                                 <h5 class="mb-0" style="color: white">Bill Anderson Bardales Layche</h5>
-                                                <h6 class="text-info"></h6>
-                                                <p class="mb-0"></p>
+                                                <h6 class="text-info">Programador</h6>
+                                                <p class="mb-0" style="color: white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi laudantium mollitia tenetur porro a enim perferendis? Obcaecati adipisci nisi facere possimus harum iste. Quia doloremque, magni vitae hic esse recusandae!</p>
                                             </div>
                                         </div>
                                     </div>
@@ -102,8 +103,8 @@
                                         <div class="col-lg-8 col-md-6 col-12 my-auto ">
                                             <div class="card-body ps-lg-0">
                                                 <h5 class="mb-0" style="color: white">Tercer David Ahuite Murayari  </h5>
-                                                <h6 class="text-info"></h6>
-                                                <p class="mb-0"></p>
+                                                <h6 class="text-info">Programador</h6>
+                                                <p class="mb-0" style ="color: white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus laboriosam hic perferendis quaerat cupiditate reiciendis quasi perspiciatis odit odio, fugiat iure quas laudantium, unde, necessitatibus molestias consequuntur voluptas iusto. Atque.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -122,8 +123,8 @@
                                         <div class="col-lg-8 col-md-6 col-12 my-auto">
                                             <div class="card-body ps-lg-0">
                                                 <h5 class="mb-0"style="color: white">Kender Jammyr Rojas Teagua</h5>
-                                                <h6 class="text-info"></h6>
-                                                <p class="mb-0"></p>
+                                                <h6 class="text-info">Programador</h6>
+                                                <p class="mb-0" style="color: white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio asperiores eius nesciunt eveniet quibusdam qui quidem illum, ullam assumenda, ipsa sed! Tempore, architecto sit! Assumenda eius commodi fugiat dolores voluptas.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -141,8 +142,8 @@
                                         <div class="col-lg-8 col-md-6 col-12 my-auto">
                                             <div class="card-body ps-lg-0">
                                                 <h5 class="mb-0"style="color: white">Dayler Jefferson Satos Panaifo</h5>
-                                                <h6 class="text-info"></h6>
-                                                <p class="mb-0"></p>
+                                                <h6 class="text-info">Programador</h6>
+                                                <p class="mb-0" style="color: white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quisquam nesciunt error aliquid voluptatum vero animi, accusamus cumque non cupiditate, necessitatibus accusantium atque voluptates corrupti sint magni, nostrum velit ratione!</p>
                                             </div>
                                         </div>
                                     </div>
@@ -164,8 +165,8 @@
                                         <div class="col-lg-8 col-md-6 col-12 my-auto">
                                             <div class="card-body ps-lg-0">
                                                 <h5 class="mb-0"style="color: white">Piero Elevi Frias Mori</h5>
-                                                <h6 class="text-info"></h6>
-                                                <p class="mb-0"></p>
+                                                <h6 class="text-info">Programador</h6>
+                                                <p class="mb-0" style="color: white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolore velit laudantium, incidunt recusandae veniam ratione perspiciatis quos vitae facere maiores, fugiat quisquam. Quos ullam, quasi rem beatae reprehenderit eveniet?</p>
                                             </div>
                                         </div>
                                     </div>
@@ -185,8 +186,8 @@
                                         <div class="col-lg-8 col-md-6 col-12 my-auto">
                                             <div class="card-body ps-lg-0">
                                                 <h5 class="mb-0"style="color: white">Jans Torres Soria</h5>
-                                                <h6 class="text-info"></h6>
-                                                <p class="mb-0"></p>
+                                                <h6 class="text-info">Programador</h6>
+                                                <p class="mb-0" style="color: white">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, error, sequi debitis aliquid voluptas, quisquam libero maxime provident officia corporis rem laborum? Asperiores quia excepturi facilis veritatis debitis, eveniet molestias.</p>
                                             </div>
                                         </div>
                                     </div>
