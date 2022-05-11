@@ -21,6 +21,12 @@
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <!-- CSS Files -->
+        <link href="{{ asset('/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
+        
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
         <!-- Styles -->
         <style>
@@ -66,13 +72,16 @@
 
                 <div class="card-header">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a class="btn btn-success" href="{{url('/info_values/chart')}}">Gráfica</a>
-                    <a href="info_values/create" class="btn btn-primary">CREAR</a>
+                        <a href="info_values/create" class="btn btn-primary">CREAR</a>
+                        <a class="btn btn-warning" href="{{url('/info_values/chart')}}">Gráfica</a>
                     @if (Route::has('login'))
                         @auth
-                        <span onclick="ExportarDatos(event.target)" data-href="/ExportarDatos" id="export" class="btn btn-info">Exportar a CSV<span>
+                        <a onclick="ExportarDatos(event.target)" data-href="/ExportarDatos" id="export" class="btn btn-info">Exportar a CSV<a>
+                        <a href="{{ route('/exportarExcel')}}" class="btn btn-success">Exportar Excel</a>
+                        
                         @else
-                        <span onclick="ExportarDatos(event.target)" data-href="/home"  id="export" class="btn btn-info">Exportar a CSV<span>
+                        <a onclick="ExportarDatos(event.target)" data-href="/home"  id="export" class="btn btn-info">Exportar a CSV<a>
+                        <a href="/home" class="btn btn-success">Exportar Excel</a>
                         @endauth
                 @endif             
                 </div>
@@ -118,18 +127,20 @@
                             
                         </div>
                     </div>
-
+                    
                 </div>
-            
+                
             </div>
+            
         </div>
         
     </body>
-    
+    @include('layouts.footers.guest')
 </html>
 <script>
         function ExportarDatos(_this){
             let _url = $(_this).data('href');
             window.location.href = _url;
         }
+        
 </script>

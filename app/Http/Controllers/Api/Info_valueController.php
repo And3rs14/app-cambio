@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exports\Info_valueExport;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Date;
@@ -9,9 +10,12 @@ use App\Models\Info_value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\Daterepeat;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 use Illuminate\Support\Facades\DB;
 
-class Info_valueController extends Controller
+class Info_valueController extends Controller 
 {
 
     public function __construct()
@@ -256,6 +260,21 @@ class Info_valueController extends Controller
             fclose($file);
         };
         return response() -> stream($callback, 200, $headers);
+        
+    }
+
+    public function exportarExcel(){
+
+        $date = date_create();
+        $cadena_fecha_actual = date_format($date, 'Y-m-d H:i:s');
+        
+        //$headers = array ("ID","Categoria ","Precio venta ","Precio compra","Fecha");
+
+        $filename = "Tipo de cambio {$cadena_fecha_actual}.xlsx";
+        
+        
+        return Excel::download(new Info_valueExport,$filename);
+       
         
     }
 
