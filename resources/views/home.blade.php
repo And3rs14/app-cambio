@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    
 @endsection
 
 
@@ -43,9 +44,10 @@
 
             <div class="card-header">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-success" href="{{url('/info_values/chart')}}">Gráfica</a>
-                <a href="info_values/create" class="btn btn-primary">CREAR</a>
-                <span onclick="ExportarDatos(event.target)" data-href="/ExportarDatos" id="export" class="btn btn-info">Exportar a CSV<span>
+                <a href="info_values/create" class="btn" style="Color:white ; background:#9c27b0;">CREAR</a>
+                <a class="btn btn-warning" href="{{url('/info_values/chart')}}" style="Color:white ; background: #ff9800">Gráfica</a>
+                <a onclick="ExportarDatos(event.target)" data-href="/ExportarDatos" id="export" class="btn btn-info">Exportar a CSV<a>
+                <a href="{{ route('/exportarExcel')}}" class="btn btn-success">Exportar Excel</a>
                 </div>
             
             </div>

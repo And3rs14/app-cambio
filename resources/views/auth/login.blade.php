@@ -78,11 +78,4 @@
     </div>
   </div>
 </div>
-
-<script>
-  function refreshPage() {
-    window.location.reload
-  }
-
-</script>
 @endsection

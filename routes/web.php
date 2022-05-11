@@ -32,3 +32,5 @@ Route::resource('info_values', 'App\Http\Controllers\Api\Info_valueController');
 
 Route::get('/ExportarDatos', [App\Http\Controllers\Api\Info_valueController::class, 'ExportarDatos']) ->name('/ExportarDatos');
 
+Route::get('/exportarExcel', [App\Http\Controllers\Api\Info_valueController::class, 'exportarExcel']) ->name('/exportarExcel');
+
